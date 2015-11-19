@@ -1,0 +1,62 @@
+{
+  "name": "latex-service",
+  "version": "0.1.0",
+  "description": "Latex service",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "webpack --config webpack.config.js --progress --profile --colors",
+    "dev": "webpack-dev-server --inline --devtool eval --progress --colors --hot --content-base src/main/resources/public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturopala/latex-service"
+  },
+  "author": "Artur Opala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arturopala/latex-service/issues"
+  },
+  "homepage": "https://github.com/arturopala/latex-service#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "async": "^1.2.0",
+    "autoprefixer": "^6.0.2",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.1.3",
+    "body-parser": "^1.9.3",
+    "css-loader": "^0.14.0",
+    "deepmerge": "^0.2.10",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.1",
+    "history": "^1.12.1",
+    "html-loader": "^0.3.0",
+    "imports-loader": "^0.6.5",
+    "isomorphic-fetch": "^2.1.1",
+    "less": "^2.1.2",
+    "less-loader": "^2.0.0",
+    "lodash": "^3.10.1",
+    "markdown-loader": "^0.1.2",
+    "null-loader": "^0.1.0",
+    "postcss-loader": "^0.6.0",
+    "postcss-nested": "^1.0.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-hot-loader": "^1.3.0",
+    "react-proxy-loader": "^0.3.4",
+    "react-router": "^1.0.0-rc3",
+    "redux": "^3.0.2",
+    "redux-thunk": "^1.0.0",
+    "reflux": "^0.3.0",
+    "reselect": "^2.0.0",
+    "stats-webpack-plugin": "^0.1.2",
+    "style-loader": "^0.12.3",
+    "superagent": "^1.1.0",
+    "url-loader": "^0.5.5",
+    "uuid": "^2.0.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0",
+    "whatwg-fetch": "^0.10.0"
+  }
+}

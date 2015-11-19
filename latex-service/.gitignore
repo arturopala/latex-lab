@@ -1,0 +1,27 @@
+target/
+bin/
+project/target/
+.cache
+.classpath
+.project
+.settings/
+.idea/
+.idea_modules/
+*.sublime-project
+*.sublime-workspace
+*.class
+
+# added by GitSavvy
+node_modules/
+
+# added by GitSavvy
+/src/main/resources/public/app.js
+
+# added by GitSavvy
+/src/main/resources/public/style.css
+
+# added by GitSavvy
+/.ensime
+
+# added by GitSavvy
+.ensime_cache/
