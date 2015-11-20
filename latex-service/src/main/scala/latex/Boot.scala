@@ -16,7 +16,7 @@ object Boot extends App {
   implicit val module = new Module
 
   val port = module.config.getInt("app.http.port")
-  val httpBinding = module.httpService.bind("localhost", port)
+  val httpBinding = module.httpService.bind("0.0.0.0", port)
 
   println("Press RETURN to stop...")
   scala.io.StdIn.readLine()
