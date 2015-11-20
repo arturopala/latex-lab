@@ -106,7 +106,7 @@ class HttpService(config: Config)(implicit system: ActorSystem, materializer: Ac
               getFromResourceDirectory("public/")
             } ~
             pathPrefix("workspace") {
-              getFromResourceDirectory(workspace)
+              getFromDirectory(workspace)
             } ~
             getFromResource("public/index.html")
         }
