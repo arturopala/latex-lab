@@ -18,10 +18,10 @@ object Boot extends App {
   val port = module.config.getInt("app.http.port")
   val httpBinding = module.httpService.bind("0.0.0.0", port)
 
-  println("Press RETURN to stop...")
-  scala.io.StdIn.readLine()
+  system.whenTerminated.onComplete(_ =>
+    httpBinding
+      .flatMap(_.unbind()) // trigger unbinding from the port
+      .onComplete(_ ⇒ system.shutdown()) // and shutdown when done
+      )
 
-  httpBinding
-    .flatMap(_.unbind()) // trigger unbinding from the port
-    .onComplete(_ ⇒ system.shutdown()) // and shutdown when done
 }
