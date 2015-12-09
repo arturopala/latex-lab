@@ -4,13 +4,10 @@ import scala.concurrent.duration._
 import scala.concurrent.{ Future }
 import scala.util.{ Try, Success, Failure }
 import scala.util.control.NonFatal
-
 import com.typesafe.config.Config
-
 import akka.actor.{ Actor, ActorSystem, Props, ActorRef, ActorLogging }
 import akka.pattern.ask
 import akka.util.Timeout
-
 import akka.stream._
 import akka.stream.scaladsl._
 import akka.http.scaladsl._
@@ -21,25 +18,23 @@ import akka.http.scaladsl.model.headers.RawHeader
 import akka.http.scaladsl.server._
 import StatusCodes._
 import Directives._
-
+import directives._
 import akka.event.Logging
-
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json._
 import DefaultJsonProtocol._
-
 import org.reactivestreams.Publisher
+import latex.workspace.Workspace
 
 /**
- * Http service exposing REST and WS API.
+ * Http service exposing resources, REST and WS APIs.
  */
-class HttpService(config: Config)(implicit system: ActorSystem, materializer: ActorMaterializer) extends SprayJsonSupport {
+class HttpService(
+    documentHttpService: latex.document.DocumentHttpService,
+    workspace:           Workspace
+)(implicit system: ActorSystem, materializer: ActorMaterializer) extends SprayJsonSupport {
 
   import scala.concurrent.ExecutionContext.Implicits.global
-
-  import JsonProtocol._
-
-  val workspace = config.getString("app.workspace")
 
   implicit val timeout = Timeout(5.seconds)
 
@@ -49,6 +44,29 @@ class HttpService(config: Config)(implicit system: ActorSystem, materializer: Ac
       case Failure(e) => println(s"Error starting HTTP server: $e")
     }
   }
+
+  import HttpService._
+
+  //////////////////////////////////////////////////////////////////////
+  //                   Main routing configuration                     //
+  //////////////////////////////////////////////////////////////////////
+  val route =
+    handleRejections(rejectionHandler) {
+      handleExceptions(exceptionHandler) {
+        logRequestResult("http", Logging.InfoLevel) {
+          respondWithHeaders(AccessControlAllowAll) {
+            documentHttpService.route ~
+              workspace.route
+          } ~
+            websocketRoute ~
+            assetsRoute
+        }
+      }
+    }
+
+}
+
+object HttpService {
 
   val exceptionHandler = {
     ExceptionHandler {
@@ -67,7 +85,7 @@ class HttpService(config: Config)(implicit system: ActorSystem, materializer: Ac
         val names = methodRejections.map(_.supported.name)
         complete(MethodNotAllowed, s"Can't do that! Supported: ${names mkString " or "}!")
       }
-      .handleNotFound { complete(NotFound, "Not here!") }
+      .handleNotFound { complete(NotFound, "Nothing exists here!") }
       .result()
   }
 
@@ -83,35 +101,28 @@ class HttpService(config: Config)(implicit system: ActorSystem, materializer: Ac
 
   val AccessControlAllowAll = RawHeader("Access-Control-Allow-Origin", "*")
 
-  //////////////////////////////////////////////////////////////////////
-  //                   Main routing configuration                     //
-  //////////////////////////////////////////////////////////////////////
-  val route = handleRejections(rejectionHandler) {
-    handleExceptions(exceptionHandler) {
-      logRequestResult("http", Logging.InfoLevel) {
-        get {
-          path("app.js") { getFromResource("public/app.js") } ~
-            path("style.css") { getFromResource("public/style.css") } ~
-            pathPrefix("api") {
-              complete(OK)
-            } ~
-            pathPrefix("ws") {
-              pathEmpty {
-                handleWebsocket { websocket =>
-                  complete(websocket.handleMessagesWithSinkSource(Sink.ignore, Source.single(TextMessage.Strict("hello")), None))
-                }
-              }
-            } ~
-            pathPrefix("assets") {
-              getFromResourceDirectory("public/")
-            } ~
-            pathPrefix("document") {
-              getFromDirectory(workspace)
-            } ~
-            getFromResource("public/index.html")
+  val assetsRoute =
+    path("app.js") { getFromResource("public/app.js") } ~
+      path("style.css") { getFromResource("public/style.css") } ~
+      pathPrefix("assets") {
+        getFromResourceDirectory("public/")
+      } ~
+      getFromResource("public/index.html")
+
+  val websocketRoute =
+    pathPrefix("ws") {
+      pathEmpty {
+        handleWebsocket { websocket =>
+          complete(websocket.handleMessagesWithSinkSource(Sink.ignore, Source.single(TextMessage.Strict("hello")), None))
         }
       }
     }
+
+  val PlainTextMediaType = ".+?\\.(?:tex|bib|txt)".r
+
+  implicit val contentTypeResolver = ContentTypeResolver {
+    case PlainTextMediaType() => ContentTypes.`text/plain(UTF-8)`
+    case f                    => ContentTypeResolver.Default(f)
   }
 
 }

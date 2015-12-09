@@ -13,13 +13,20 @@ import akka.stream.ActorMaterializer
 import akka.http.scaladsl.Http
 import latex.http.HttpService
 import com.typesafe.config.ConfigFactory
-
 import com.softwaremill.macwire._
+import document.{ DocumentHttpService, DocumentService, DocumentServiceActorStage }
+import scala.concurrent.duration._
+import java.util.concurrent.TimeUnit
+import latex.workspace.Workspace
 
 class Module(implicit system: ActorSystem, materializer: ActorMaterializer) {
 
   lazy val config = ConfigFactory.load()
+  lazy val root: Workspace = Workspace(config.getString("app.workspace"))
+  lazy val timeout: FiniteDuration = FiniteDuration(config.getDuration("app.http.timeout", TimeUnit.MILLISECONDS), TimeUnit.MILLISECONDS)
   lazy val httpService: HttpService = wire[HttpService]
+  lazy val documentHttpService: DocumentHttpService = wire[DocumentHttpService]
+  lazy val documentService: DocumentService = wire[DocumentServiceActorStage]
 }
 
 object ActorOf {

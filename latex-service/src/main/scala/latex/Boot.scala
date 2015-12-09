@@ -18,6 +18,8 @@ object Boot extends App {
   val port = module.config.getInt("app.http.port")
   val httpBinding = module.httpService.bind("0.0.0.0", port)
 
+  println(s"Workspace location: ${module.root.location}")
+
   system.whenTerminated.onComplete(_ =>
     httpBinding
       .flatMap(_.unbind()) // trigger unbinding from the port
