@@ -6,10 +6,10 @@ import akka.actor._
 trait ActorRefPool[Key] extends Actor {
 
   def createNewActorRefFor(key: Key): ActorRef
-  def keyHasBeenRemoved(key: Key): Unit
+  def keyHasBeenRemoved(key: Key): Unit = ()
 
-  private[this] val pool = collection.mutable.Map[Key, ActorRef]()
-  private[this] val reverse = collection.mutable.Map[ActorRef, Key]()
+  val pool = collection.mutable.Map[Key, ActorRef]()
+  val reverse = collection.mutable.Map[ActorRef, Key]()
 
   def getOrCreate(key: Key): Try[ActorRef] = pool.get(key) match {
     case Some(ref) => Success(ref)

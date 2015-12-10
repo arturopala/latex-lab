@@ -35,7 +35,5 @@ class DocumentActorRouter(workspace: Workspace) extends ActorRefPool[String] {
     context.actorOf(DocumentActor.props(key, workspace / key))
   }
 
-  def keyHasBeenRemoved(key: String) = ()
-
 }
 
