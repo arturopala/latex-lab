@@ -1,12 +1,16 @@
 package latex.workspace
 
 import java.io.File
+import java.nio.file.{ Files, StandardCopyOption, Path }
+import java.nio.charset.{ Charset, StandardCharsets }
 import akka.http.scaladsl._
 import server.Route
 import server.Directives._
 import model._
 import StatusCodes._
 import latex.http.HttpService.contentTypeResolver
+import concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 trait Workspace {
   def location: String
@@ -14,6 +18,7 @@ trait Workspace {
   def exists(filename: String): Boolean
   def list: Seq[String]
   def urlOf(filename: String): Option[String]
+  def copyFrom(source: File, charset: Charset, destination: String): Future[Either[Exception, String]]
   def route: Route
 }
 
@@ -50,6 +55,22 @@ class FileSystemWorkspace(val location: String, urlPrefix: List[String]) extends
       else
         complete(NotFound)
     }
+  }
+
+  private def assertRootExists = if (!root.exists) root.mkdirs()
+
+  def copyFrom(source: File, charset: Charset, destination: String): Future[Either[Exception, String]] = Future {
+    try {
+      assertRootExists
+      Files.copy(source.toPath, root.toPath.resolve(destination), StandardCopyOption.REPLACE_EXISTING)
+      Right(destination)
+    }
+    catch {
+      case e: Exception =>
+        println(e)
+        Left(e)
+    }
+
   }
 
 }

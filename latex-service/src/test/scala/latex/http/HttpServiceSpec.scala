@@ -8,11 +8,14 @@ import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.model.headers._
 import spray.json._
 import DefaultJsonProtocol._
+import org.scalatest.prop.PropertyChecks
+import org.scalacheck.Gen._
+import java.util.UUID
 
 import latex._
 import document._
 
-class HttpServiceSpec extends FlatSpecLike with Matchers with ScalatestRouteTest with ActorSystemTestKit {
+class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks with ScalatestRouteTest with ActorSystemTestKit {
 
   val module = new Module
 
@@ -51,6 +54,22 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with ScalatestRouteTest
     Get("/resources/test/ExampleProjectTest.jpg") ~> module.httpService.route ~> check {
       status should be(OK)
       contentType should be(ContentType(MediaTypes.`image/jpeg`))
+    }
+  }
+
+  "POST /documents/foo" should "store new content and return resource url" in {
+    val prefix: String = alphaStr(Parameters.default.withSize(8)).get
+    forAll((alphaStr, "text"), (uuid, "suffix"), minSize(1024), maxSize(100 * 1024), minSuccessful(50)) { (text: String, suffix: UUID) =>
+      val key = prefix+"_"+suffix
+      Post(s"/documents/$key", HttpEntity(ContentTypes.`text/plain(UTF-8)`, text)) ~> module.httpService.route ~> check {
+        status should be(OK)
+        header("Location") shouldBe Some(Location(Uri(s"/resources/$key/$key.tex")))
+        module.root.exists(s"$key/$key.tex") shouldBe true
+      }
+    }
+    new java.io.File(module.root.location).listFiles filter (_.getName.startsWith(prefix+"_")) foreach { file =>
+      new java.io.File(file, file.getName+".tex").delete
+      file.delete
     }
   }
 

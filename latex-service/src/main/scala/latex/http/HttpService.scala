@@ -2,7 +2,7 @@ package latex.http
 
 import scala.concurrent.duration._
 import scala.concurrent.{ Future }
-import scala.util.{ Try, Success, Failure }
+import scala.util.{ Try, Success, Failure, Left, Right }
 import scala.util.control.NonFatal
 import com.typesafe.config.Config
 import akka.actor.{ Actor, ActorSystem, Props, ActorRef, ActorLogging }
@@ -25,6 +25,7 @@ import spray.json._
 import DefaultJsonProtocol._
 import org.reactivestreams.Publisher
 import latex.workspace.Workspace
+import java.io.File
 
 /**
  * Http service exposing resources, REST and WS APIs.
@@ -68,6 +69,36 @@ class HttpService(
 
 object HttpService {
 
+  def publisherAsMessageSource[A](p: Publisher[A])(f: A => String): Source[TextMessage, Unit] = Source(p).map(e => TextMessage.Strict(f(e))).named("tms")
+
+  val pathEmpty: Directive0 = pathEnd | pathSingleSlash
+
+  val AccessControlAllowAll = RawHeader("Access-Control-Allow-Origin", "*")
+
+  implicit val contentTypeResolver = ContentTypeResolver {
+    case PlainTextMediaType() => ContentTypes.`text/plain(UTF-8)`
+    case f                    => ContentTypeResolver.Default(f)
+  }
+
+  val assetsRoute =
+    path("app.js") { getFromResource("public/app.js") } ~
+      path("style.css") { getFromResource("public/style.css") } ~
+      pathPrefix("assets") {
+        getFromResourceDirectory("public/")
+      } ~
+      getFromResource("public/index.html")
+
+  val websocketRoute =
+    pathPrefix("ws") {
+      pathEmpty {
+        handleWebsocket { websocket =>
+          complete(websocket.handleMessagesWithSinkSource(Sink.ignore, Source.single(TextMessage.Strict("hello")), None))
+        }
+      }
+    }
+
+  val PlainTextMediaType = ".+?\\.(?:tex|bib|txt)".r
+
   val exceptionHandler = {
     ExceptionHandler {
       case e: Throwable =>
@@ -95,34 +126,20 @@ object HttpService {
       case None          ⇒ reject(ExpectedWebsocketRequestRejection)
     }
 
-  def publisherAsMessageSource[A](p: Publisher[A])(f: A => String): Source[TextMessage, Unit] = Source(p).map(e => TextMessage.Strict(f(e))).named("tms")
-
-  val pathEmpty: Directive0 = pathEnd | pathSingleSlash
-
-  val AccessControlAllowAll = RawHeader("Access-Control-Allow-Origin", "*")
-
-  val assetsRoute =
-    path("app.js") { getFromResource("public/app.js") } ~
-      path("style.css") { getFromResource("public/style.css") } ~
-      pathPrefix("assets") {
-        getFromResourceDirectory("public/")
-      } ~
-      getFromResource("public/index.html")
-
-  val websocketRoute =
-    pathPrefix("ws") {
-      pathEmpty {
-        handleWebsocket { websocket =>
-          complete(websocket.handleMessagesWithSinkSource(Sink.ignore, Source.single(TextMessage.Strict("hello")), None))
+  def uploadRequestBodyToFile(acceptedMediaTypes: Seq[MediaType], destination: File): Directive1[(ContentType, File)] = extractRequestContext.flatMap { ctx ⇒
+    import ctx.executionContext
+    val entity = ctx.request.entity
+    acceptedMediaTypes.find(_ == entity.contentType.mediaType) match {
+      case None => complete(NotAcceptable)
+      case Some(mediaType) =>
+        val uploading = entity.getDataBytes.runWith(Sink.file(destination), ctx.materializer).map(_ => (entity.contentType, destination))
+        onComplete(uploading) flatMap {
+          case Success(uploaded) => provide(uploaded)
+          case Failure(ex) =>
+            destination.delete()
+            failWith(ex)
         }
-      }
     }
-
-  val PlainTextMediaType = ".+?\\.(?:tex|bib|txt)".r
-
-  implicit val contentTypeResolver = ContentTypeResolver {
-    case PlainTextMediaType() => ContentTypes.`text/plain(UTF-8)`
-    case f                    => ContentTypeResolver.Default(f)
   }
 
 }

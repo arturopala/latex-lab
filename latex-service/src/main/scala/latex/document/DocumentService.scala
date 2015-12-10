@@ -2,9 +2,12 @@ package latex.document
 
 import scala.concurrent.{ Future }
 import latex.workspace.Workspace
+import java.io.File
+import java.nio.charset.Charset
 
 trait DocumentService {
   def getDocument(documentId: String): Future[Option[Document]]
+  def setDocumentFile(documentId: String, file: File, charset: Charset): Future[Either[Exception, String]]
 }
 
 import scala.concurrent.duration._
@@ -21,4 +24,5 @@ class DocumentServiceActorStage(workspace: Workspace, actorSystem: ActorSystem, 
 
   def getDocument(documentId: String): Future[Option[Document]] = (router ? GetDocument(documentId)).asInstanceOf[Future[Option[Document]]]
 
+  def setDocumentFile(documentId: String, file: File, charset: Charset): Future[Either[Exception, String]] = (router ? SetDocument(documentId, file, charset)).asInstanceOf[Future[Either[Exception, String]]]
 }
