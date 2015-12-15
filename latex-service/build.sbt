@@ -89,7 +89,7 @@ dockerfile in docker := {
     //run(s"groupadd -r $linuxUser && useradd -r -g $linuxUser $linuxUser")
     //user(linuxUser)
     // On launch run Java with the classpath and the main class
-    copy(file("../workspace/test"), file(s"$workspaceFolder/test"))
+    copy(file("../workspace"), file(s"$workspaceFolder"))
     entryPoint("java", "-cp", classpathString, mainclass)
   }
 }

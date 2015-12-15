@@ -1,0 +1,67 @@
+\subsection{Il terminale}
+
+Con ``terminale'' si indica un particolare tipo di attrezzatura hardware atta alla ricezione ed invio di input/output. All'epoca dei primi computer, si trattava di unita composte da tastiera e monitor (dispositivi a caratteri) prive di una CPU propria (per questo erano anche noti come ``terminali stupidi), collegate attraverso porte seriali all'elaboratore principale.
+Nonostante ad oggi questo approccio sia superato, ancora oggi, nei sistemi ispirati fortemente a Unix è rimasta la modalità di interfacciamento attraverso terminali. In Linux, pur non essendo realmente hardware (si parla di \textbf{Virtual Terminal}), sono ancora trattati come tali, e sono visibili nella cartella delle periferiche (\textbf{/dev}) sotto forma di \textbf{tty\textit{X}} (dove il valore di \textbf{\textit{X}} è un numero progressivo).
+
+A livelli di ``astrazione'' più alta (es. nelle interfacce grafiche o con ssh) si utilizzano un altro tipo di terminali, definiti \textbf{``Pseudo Terminal''} (es pts/0). Nonostante vi siano notevoli differenze sul piano dell'implementazione software, non sono rilevanti ai fini dell'utilizzo comune. 
+Di particolare importanza è invece evitare la confusione tra la dicitura ``terminale'' e quello di ``shell'', anche se spesso, anche in letteratura, vengono confusi. 
+
+\subsection{La shell}
+
+La shell è uno strumento software che permette, attraverso dei comandi, di comunicare con il Sistema Operativo. In molti casi, la shell prende anche il nome di ``Interprete dei Comandi''. 
+Nella storia dei sistemi operativi Unix-ware prima, e Linux negli ultimi anni, si sono succedute diverse implementazioni di shell, differenti per caratteristiche tecniche e modalità d'uso. 
+Per funzionare, una shell sia appogia ad un terminale, sia esso fisico (es delle porte seriali), virtuale (tty1,tty2... etc) o uno \textit{pseudo terminal} (es. gnome-terminal).
+Ripercorrendo la storia delle shell, tra le prime a venire fuori ci sono state la \textbf{sh} (Bourne Shell, prende il nome da Stephen Bourne, suo ideatore) e la \textbf{csh} (C-Shell, prende il nome dal fatto di avre una sintassi prossima a quella del linguaggio di programmazione C). 
+Ad oggi, non si usano più quelle versioni, ma delle versioni ad esse ispirate, come ad esempio la \textbf{tcsh} (presente in molti sistemi ``BSD-like'') la \textbf{ksh} (Korn Shell, di ideazione più recente, molto usata nei sistemi Oracle\textregistered, e la \textbf{bash} (Bourne Again Shell) utilizzata come shell predefinita nella maggior parte dei sistemi GNU/Linux, sarà usata come shell di riferimento in questo testo. 
+
+Tra le particolarità di queste shell, oltre ad alcune differenze funzionali, c'è il fatto che ognuna di esse dispone di un proprio linguaggio di scriptig
+
+\subsection{Bash}
+
+Bash è una shell completa, dotata di un potente linguaggio di scripting, ampiamente utilizzato in tutto il mondo GNU/Linux (e non solo). Fornisce, oltre all'accesso a tutti i comandi del sistema, una serie di strutture iterative e di controllo di flusso, garantisce l'uso di variabili d'ambiente (non tipizzate), autocompletamento dei comandi e degli argomenti (ma non delle opzioni) e, tra le altre cose, delle combinazioni di tasti per il controllo delle attività. 
+
+La shell offre da subito una serie di informazioni utili, immediatamente dopo il login
+\begin{verbatim}
+ [user@hostname ~]$
+\end{verbatim}
+Esaminando i campi uno ad uno
+\begin{itemize}
+ \item \textbf{user}: l'utente con cui si è collegati
+ \item \textbf{hostname}: il nome della macchina a cui si è collegati
+ \item \textasciitilde: La cartella in cui ci si trova. La "\textasciitilde" indica la propria cartella HOME
+ \item \$: Il tipo di utenza. Con \$ si tratta di utenze "normali", con \# di utenze di amministrazione
+\end{itemize}
+
+Nonostante alcune variazioni sul tema, variabili da comando a comando, solitamente la sitassi lanciare un comando dalla shell è del tipo:
+
+\begin{verbatim}
+ [user@hostname.domain ~]$ commando -o --opzione-lunga argomento1 
+\end{verbatim}
+
+Scomponendo l'esempio otteniamo
+
+\begin{itemize}
+ \item \textbf{comando}: il comando che si vuole lanciare
+ \item \textbf{-o}: Si tratta di una opzione in formato corto, composta da un "-" ed un singolo valore alfanumerico. Quasi tutti i comandi offrono opzioni di questo tipo. In presenza di più di questo tipo di opzioni, esse possono essere sommate in una stringa (es. -p -r -o possono essere scritte con -pro).
+ \item \textbf{--opzione-lunga}: Anche questo tipo di opzioni sono comuni. Anche se generalmente molte di queste opzioni hanno un opportuno omologo in formato corto, vengono spesso utilizzate per facilitare la lettura di script o l'approccio mnemonico ai comandi. 
+ \item \textbf{argomento1}: In generale, è il contenuto su cui lavorerà il comando lanciato. Può fare riferimento ad un elevato numero di cose (file, cartelle, device, indirizzi web, riferimenti in memoria etc, etc...)
+\end{itemize}
+
+Come già anticipato, ci sono alcune sequenze di controllo che permettono, digitando le opportune combinazioni di tasti, di mandare degli specifici segnali, o eseguire alcune operazioni sulla shell.
+
+\begin{itemize}
+ \item \keys{CTRL + c} - SIGINT (2): Interruzione del processo da tastiera
+ \item \keys{CTRL + z} - SIGTSTP (18,20,24): Ferma il processo e lo lascia in stato ``stopped''
+ \item \keys{CTRL + r} - RESEARCH: Consente la ricerca nella history dei comandi
+ \item \keys{CTRL + d} - SIGQUIT (3): Invia il segnale di uscita dalla tastiera, ma è utilizzato anche con funzione di ``logout'' e di EOF
+ \item \keys{CTRL + a} - HOME: Riporta il cursore alla posizione iniziale
+ \item \keys{CTRL + b} - END: Porta il cursore in fondo alla riga
+\end{itemize}
+
+
+%\subsubsection{}
+
+
+
+
+

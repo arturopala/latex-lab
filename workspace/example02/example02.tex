@@ -1,0 +1,170 @@
+\documentclass[letterpaper]{scrartcl}
+\usepackage{nicefrac}
+\usepackage{plainresume3}
+\usepackage{changepage} % used for adjustwidth. Not required if those are removed
+\pagestyle{plain}
+%\author{Dan Luu}
+
+\begin{document}
+%\title{Dan Luu}
+\title{\vspace{-6ex}\tt{dan.luu@gmail.com}}
+\date{\vspace{-10ex}}
+\author{}
+%\maketitle
+
+\email{danluu@gmail.com} 
+%\footnotesize
+%\setstretch{.9}
+%
+%-------------------------------------------------------------------------------
+%
+
+%\vspace{-3pt}
+
+\mag 1000
+
+%
+%-------------------------------------------------------------------------------
+%
+
+\section*{Summary}
+\begin{list1}
+  \item Background in hardware, software, and math. Experience in tools, prototyping, and hardware/software co-design.
+
+\end{list1}
+
+%\vspace{-3pt}
+\section*{Experience}
+%\vspace{-3pt}
+
+\begin{list1}
+
+
+\item \begin{tabular1bold} Microsoft, Senior Engineer; Seattle, WA & 2015 -- Present \end{tabular1bold}
+
+  \begin{list2}
+  \item Hardware/software co-design for 40Gb networking, packet encap/decap, routing, etc. \hfill \emph{SystemVerilog}
+  \end{list2}
+
+\item \begin{tabular1bold} Google, Senior Engineer; Madison, WI & 2013 -- 2014 \end{tabular1bold}
+
+  \begin{list2}
+  \item Exploratory hardware/software co-design; details confidential \hfill \emph{Verilog}
+
+    \begin{list3}
+      \item Took project from requirements gathering stage (2 people) to full implementation stage ({\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}20 people)
+    \end{list3}
+    \item Highly optimized deep learning inferences
+  \end{list2}
+
+\item \begin{tabular1bold} Recurse, Sabbatical; New York, NY & Spring 2013 \end{tabular1bold}
+
+  \begin{list2}
+  \item Projects include channels and coroutines in C and a BitTorrent client in Scala.
+  \item See https://github.com/danluu/ and http://danluu.com for more.
+  \end{list2}
+\item \begin{tabular1bold} Centaur Technology (acquired by VIA), Member of Technical Staff; Austin, TX & 2005 -- 2013 \end{tabular1bold}
+
+  %\begin{adjustwidth}{1.5em}{1.5em}
+  \begin{list2}
+  \item Here's one particular six-month project (adding an ARM front-end to our x86):
+    \begin{list3}
+    \item Helped reverse engineer the ARMv7 ISA (this was pre-AArch64)
+    \item Created architectural simulator and got Android running on it\hfill \emph{C}
+    \item Implemented \nicefrac{1}{2} of the translator, and wrote associated microcode \hfill \emph{Verilog / Templating language}
+    \item Created test generator that found 90\% of the first 1000 bugs on the project \hfill \emph{F\#}
+    \end{list3}
+  \item Other roles (often brief) included formal verification, adding fault tolerance to a distributed system, post-silicon debug, test tooling, etc.
+    
+  \end{list2}
+  %\end{adjustwidth}
+
+\item \begin{tabular1bold} Ultrafast Optics and Fiber Communications Lab, Research Assistant; Lafayette, IN & 2003 -- 2005 \end{tabular1bold}
+
+  \begin{list2}
+  \item Lab work, included speeding up parallel (256 wavelength) polarimeter by 40x  \hfill \emph{MATLAB and C}
+%  \item Designed and built Fourier transform spectroscopy interferometer \hfill \emph{MATLAB and C}
+  \end{list2}
+
+\item \begin{tabular1bold} IBM, Intern; Austin, TX & Summer 2003 \end{tabular1bold}
+
+  \begin{list2}
+  \item Semi-formal / constrained random POWER6 completion unit functional verification \hfill \emph{VHDL}
+  \end{list2}
+
+\item \begin{tabular1bold} Micron Technology, Intern; Boise, ID & Summer 2002 \end{tabular1bold}
+
+  \begin{list2}
+  \item Flash product engineering / characterization. Automated previously manual tasks. \hfill \emph{Perl}
+  \end{list2}
+\item \begin{tabular1bold} Spatial Systems Research Laboratory, Research Assistant; Madison, WI & 2001 \end{tabular1bold}
+
+  \begin{list2}
+  \item Studied tilings and related combinatorial models, e.g., alternating sign matricies and square ice
+  \end{list2}
+\end{list1}
+
+\section*{Education}
+%\vspace{-3pt}
+\begin{list1}
+  %	\item
+  %	\begin{list2}
+  %	\item Selected Graduate Courses: Computer Architecture, Interconnect Modeling and Optimization, VLSI Design, Digital Logic Synthesis Algorithms, Computational and Statistical Learning Theory, Empirical Methods in Engineering, Matrix Theory, Error-Correcting Codes, Adv. Math for Engineers, Theory of Differential Equations, Algorithms
+  %	\item Selected Upper Division Undergraduate Courses: CMOS VLSI Design, Testing and Design for Testability, Digital Systems Design and Synthesis, Databases, Combinatorics
+  %	\end{list2}
+\item
+  \begin{tabular1bold}BS Math \& CMPE (Wisconsin, '00-'03), MS EE (Purdue, '03-'05)\end{tabular1bold}
+\end{list1}
+
+\section*{Non-work Projects}
+%\vspace{-3pt}
+\begin{list1}
+\item
+  \begin{list2}
+  \item See https://github.com/danluu/ and http://danluu.com for an exhaustive list
+    \begin{list3}
+    \item Sega system on Xilinx Vertex FPGA; translated Z80 instructions into RISC $\mu$ops \hfill \emph{Verilog and VHDL}
+    \item Experiments with a randomized algorithm as cache eviction policy \hfill \emph{Dinero IV and SPEC}
+    \item A fuzzer written in an hour that found {\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}20 bugs in the Julia compiler and base libraries \hfill \emph{Julia}
+    \item Misc. experiments in deep learning \hfill \emph{MATLAB and Octave}
+    \item Formal verification of a secure hypervisor model \hfill \emph{ACL2}
+    \end{list3}
+
+  \end{list2}
+\end{list1}
+
+
+%
+%-------------------------------------------------------------------------------
+%
+%\vspace{-3pt}
+%% \section*{Honors and Awards}
+%% %\vspace{-3pt}
+%% \begin{list1}
+%% \item
+%%   \begin{list2}
+%%   \item MCD Fellowship \hfill 2009 - 2010
+%%   \item Burton D. Morgan Entrepreneurship Competition Semi-Finalist \hfill 2005
+%%   \item David Ross Fellowship (five years of guaranteed funding) \hfill 2003 - 2005
+%%   \item SRC undergraduate research grant \hfill 2001 - 2003
+%%   \item Dean's List \hfill 2001 - 2003
+%%   \item VIGRE undergraduate research funding \hfill 2001
+%%   \item AP Scholar with distinction \hfill 2000
+%%   \end{list2}
+%% \end{list1}
+
+%\begin{comment}
+%\vspace{-3pt}
+\section*{Miscellaneous}
+%\vspace{-3pt}
+\begin{list1}
+\item
+  \begin{list2}
+  \item Languages: English mother tongue. Once-fluent Vietnamese. Once-functional (now moribund) Japanese and French. Willing (and eager) to learn any language
+    %\item \coltabone{PL}{Once-fluent (now rusty) Ruby. Once-functional (now moribund) x86, ACL2, C, C++, Verilog, and VHDL. Willing (and eager to) learn any language}
+    %		\item Activities: Officer and organizer for Students in Software Engineering; member of ARG climbing team, UT climbing team, and occasional antendee of UT sciences Toastmasters club
+  \item Work Authorization: U.S. Citizen
+  \end{list2}
+\end{list1}
+%\end{comment}
+\end{document}

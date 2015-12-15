@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Disk.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5255"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5257" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3776">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3778" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3780" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3776"
+       id="linearGradient3782"
+       x1="65.272709"
+       y1="426.3696"
+       x2="86.616459"
+       y2="426.3696"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5255"
+       id="linearGradient5259"
+       x1="38"
+       y1="422.36218"
+       x2="102"
+       y2="422.36218"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0300636"
+     inkscape:cx="302.21952"
+     inkscape:cy="703.78695"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="721"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect3755"
+       width="640"
+       height="140"
+       x="40"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Livello2">
+    <rect
+       style="fill:#ff0000;stroke:url(#linearGradient5259);stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;opacity:0.61648746"
+       id="rect3758"
+       width="60"
+       height="140"
+       x="40"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#0000ff;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;opacity:0.5"
+       id="rect3760"
+       width="100"
+       height="140"
+       x="100"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#0000ff;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;opacity:0.5"
+       id="rect3762"
+       width="100"
+       height="140"
+       x="200"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#0000ff;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;opacity:0.5"
+       id="rect3764"
+       width="100"
+       height="140"
+       x="300"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.5;fill:#00ff00;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:9, 3;stroke-dashoffset:0"
+       id="rect3766"
+       width="140"
+       height="100"
+       x="414.17511"
+       y="372.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="62.132084"
+       y="405.80017"
+       id="text3786"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="62.132084"
+         y="405.80017"
+         id="tspan3792" /></text>
+    <rect
+       style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:9, 3;stroke-dashoffset:0"
+       id="rect5261"
+       width="280"
+       height="140"
+       x="400"
+       y="352.36218"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Testo">
+    <path
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       d="m 53.008548,356.3918 0,28.96816 6.485273,0 0,-21.18335 6.115498,15.60063 4.323516,0 6.115498,-15.60063 0,21.18335 6.485273,0 0,-28.96816 -8.703918,0 -6.087055,15.50758 -6.030166,-15.50758 -8.703919,0 z m 0,49.62426 0,28.96817 11.349228,0 c 3.5318,0 6.148662,-0.70818 7.879037,-2.07802 1.73033,-1.36983 2.61684,-3.44267 2.616865,-6.23405 -2.5e-5,-1.82213 -0.417207,-3.36772 -1.223099,-4.62126 -0.805942,-1.25351 -1.943708,-2.10901 -3.413302,-2.57426 1.149597,-0.47813 2.040847,-1.18889 2.645308,-2.17106 0.604415,-0.99506 0.91019,-2.22015 0.910214,-3.62877 -2.4e-5,-2.67504 -0.843867,-4.61607 -2.503088,-5.83085 -1.647412,-1.21473 -4.30694,-1.82987 -7.992814,-1.8299 l -10.268349,0 z m 6.826603,5.08649 3.783076,0 c 1.078493,2e-5 1.917595,0.27658 2.474644,0.80639 0.557015,0.51695 0.824863,1.26907 0.824881,2.26412 -1.8e-5,1.008 -0.267866,1.77821 -0.824881,2.29511 -0.557049,0.51694 -1.396151,0.77541 -2.474644,0.77539 l -3.783076,0 0,-6.14101 z m 0,11.19648 4.010629,0 c 1.386639,10e-6 2.441442,0.32825 3.12886,0.96146 0.687383,0.62032 1.023972,1.56887 1.023991,2.82239 -1.9e-5,1.27937 -0.3532,2.22018 -1.052435,2.85339 -0.687418,0.63323 -1.725629,0.96148 -3.100416,0.96147 l -4.010629,0 0,-7.59871 z m -6.826603,33.3413 0,28.96816 6.826603,0 0,-10.97936 1.934204,0 c 1.114051,1e-5 2.010042,0.27655 2.673753,0.80639 0.675535,0.52985 1.339231,1.53009 1.991093,2.97746 l 3.242636,7.19551 7.28171,0 -3.726188,-8.21902 c -0.758534,-1.66706 -1.500452,-2.90766 -2.247089,-3.72181 -0.734829,-0.82707 -1.566821,-1.38016 -2.503088,-1.61279 1.70663,-0.58153 2.970025,-1.47063 3.81152,-2.69833 0.853302,-1.22766 1.279964,-2.80168 1.279988,-4.7143 -2.4e-5,-2.76549 -0.810682,-4.79957 -2.446199,-6.07897 -1.623709,-1.27935 -4.183683,-1.92291 -7.679929,-1.92294 l -10.439014,0 z m 6.826603,5.42765 2.872863,0 c 1.434045,2e-5 2.484109,0.26882 3.100415,0.83741 0.628126,0.56864 0.93864,1.53527 0.938658,2.85339 -1.8e-5,1.33108 -0.310532,2.27189 -0.938658,2.8534 -0.616306,0.58155 -1.66637,0.86845 -3.100415,0.86843 l -2.872863,0 0,-7.41263 z"
+       id="text5264"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5272"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:bold;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Sans Bold"><flowRegion
+         id="flowRegion5274"><rect
+           id="rect5276"
+           width="31.066042"
+           height="120.38091"
+           x="56.307201"
+           y="368.90924" /></flowRegion><flowPara
+         id="flowPara5278"></flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="125.7972"
+       y="433.27484"
+       id="text5281"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5283"
+         x="125.7972"
+         y="433.27484">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="225.0537"
+       y="432.01215"
+       id="text5285"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5287"
+         x="225.0537"
+         y="432.01215">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="325.04752"
+       y="432.98297"
+       id="text5289"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5291"
+         x="325.04752"
+         y="432.98297">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="586.25482"
+       y="432.6911"
+       id="text5293"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5295"
+         x="586.25482"
+         y="432.6911">E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="448.16574"
+       y="431.95377"
+       id="text5297"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5299"
+         x="448.16574"
+         y="431.95377">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="302.76184"
+       y="320.62357"
+       id="text5301"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5303"
+         x="302.76184"
+         y="320.62357">/dev/sda</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="120.14742"
+       y="472.78632"
+       id="text5305"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5307"
+         x="120.14742"
+         y="472.78632">sda1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="219.17043"
+       y="472.8447"
+       id="text5309"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5311"
+         x="219.17043"
+         y="472.8447">sda2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="319.95996"
+       y="472.90308"
+       id="text5313"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5315"
+         x="319.95996"
+         y="472.90308">sda3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="580.0213"
+       y="471.99063"
+       id="text5317"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5319"
+         x="580.0213"
+         y="471.99063">sda4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="436.8447"
+       y="460.45761"
+       id="text5321"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5323"
+         x="436.8447"
+         y="460.45761">sda5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="49.198128"
+       y="532.1012"
+       id="text5325"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5327"
+         x="49.198128"
+         y="532.1012">P = Primaria</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="280.31018"
+       y="532.27631"
+       id="text5329"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5331"
+         x="280.31018"
+         y="532.27631">E = Estesa</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="477.71411"
+       y="532.33472"
+       id="text5333"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/alex/Documenti/Book_EnterpriseLinux/Immagini/disk_scheme.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan5335"
+         x="477.71411"
+         y="532.33472">L = Logica</tspan></text>
+  </g>
+</svg>
