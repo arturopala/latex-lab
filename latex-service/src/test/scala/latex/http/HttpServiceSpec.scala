@@ -29,7 +29,7 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
       contentType should be(ContentType(MediaTypes.`application/json`, HttpCharsets.`UTF-8`))
       responseAs[String].parseJson.convertTo[Document] >> { document =>
         document.url shouldBe "/resources/test/test.tex"
-        document.resources should have size 4
+        document.resources should have size 2
       }
     }
   }
@@ -42,18 +42,11 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
     }
   }
 
-  "GET /resources/test/ExampleProjectTest.bib" should "return test bib document" in {
-    Get("/resources/test/ExampleProjectTest.bib") ~> module.httpService.route ~> check {
+  "GET /resources/test/test.bib" should "return test bib document" in {
+    Get("/resources/test/test.bib") ~> module.httpService.route ~> check {
       status should be(OK)
       contentType should be(ContentType(MediaTypes.`text/plain`, HttpCharsets.`UTF-8`))
       responseAs[String] should include("""url={http://books.google.com/books?id=W-xMPgAACAAJ},""")
-    }
-  }
-
-  "GET /resources/test/ExampleProjectTest.jpg" should "return test jpeg image" in {
-    Get("/resources/test/ExampleProjectTest.jpg") ~> module.httpService.route ~> check {
-      status should be(OK)
-      contentType should be(ContentType(MediaTypes.`image/jpeg`))
     }
   }
 
