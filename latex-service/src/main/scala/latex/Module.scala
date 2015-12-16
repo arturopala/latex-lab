@@ -19,8 +19,10 @@ import scala.concurrent.duration._
 import java.util.concurrent.TimeUnit
 import latex.workspace.Workspace
 
-class Module(implicit system: ActorSystem, materializer: ActorMaterializer) {
+class Module() {
 
+  implicit lazy val system = ActorSystem("app")
+  implicit lazy val materializer = akka.stream.ActorMaterializer()
   lazy val config = ConfigFactory.load()
   lazy val root: Workspace = Workspace(config.getString("app.workspace"))
   lazy val timeout: FiniteDuration = FiniteDuration(config.getDuration("app.http.timeout", TimeUnit.MILLISECONDS), TimeUnit.MILLISECONDS)

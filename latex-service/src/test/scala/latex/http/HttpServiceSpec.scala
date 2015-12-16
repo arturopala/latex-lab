@@ -29,7 +29,7 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
       contentType should be(ContentType(MediaTypes.`application/json`, HttpCharsets.`UTF-8`))
       responseAs[String].parseJson.convertTo[Document] >> { document =>
         document.url shouldBe "/resources/test/test.tex"
-        document.resources should have size 3
+        document.resources should have size 4
       }
     }
   }
@@ -54,6 +54,19 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
     Get("/resources/test/ExampleProjectTest.jpg") ~> module.httpService.route ~> check {
       status should be(OK)
       contentType should be(ContentType(MediaTypes.`image/jpeg`))
+    }
+  }
+
+  "GET /resources/test/images/test.jpg" should "return test jpeg image" in {
+    Get("/resources/test/images/test.jpg") ~> module.httpService.route ~> check {
+      status should be(OK)
+      contentType should be(ContentType(MediaTypes.`image/jpeg`))
+    }
+  }
+
+  "GET /resources/test/test.log" should "return 404" in {
+    Get("/resources/test/test.log") ~> module.httpService.route ~> check {
+      status should be(NotFound)
     }
   }
 
