@@ -13,6 +13,7 @@ import DocumentJsonProtocol._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import java.io.File
 import latex.http.HttpService._
+import scala.util.{ Try, Success, Failure }
 
 object DocumentHttpService {
   val baseUrlPrefix = "documents"
@@ -33,11 +34,11 @@ class DocumentHttpService(documentService: DocumentService) extends SprayJsonSup
             uploadRequestBodyToFile(Seq(MediaTypes.`text/plain`), File.createTempFile(documentKey, ".tmp")) {
               case (contentType, file) =>
                 onSuccess(documentService.setDocumentFile(documentKey, file, contentType.charset.nioCharset)) {
-                  case Right(url) =>
+                  case Success(url) =>
                     respondWithHeader(Location(Uri(url))) {
                       complete(OK)
                     }
-                  case Left(exception) =>
+                  case Failure(exception) =>
                     failWith(exception)
                 }
             }

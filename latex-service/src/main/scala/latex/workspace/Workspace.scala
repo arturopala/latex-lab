@@ -18,7 +18,8 @@ trait Workspace {
   def exists(filename: String): Boolean
   def list: Seq[String]
   def urlOf(filename: String): Option[String]
-  def copyFrom(source: File, charset: Charset, filename: String): Future[Either[Exception, String]]
+  def copyFrom(source: File, charset: Charset, filename: String): Future[String]
+  def renderPdf(sourcefilename: String): Future[(String, String)]
   def route: Route
 }
 
@@ -26,7 +27,7 @@ object Workspace {
   val baseUrlPrefix = "resources"
   def apply(location: String): Workspace = new FileSystemWorkspace(location, baseUrlPrefix :: Nil)
 
-  val blacklist = Seq(".log")
+  val blacklist = Seq(".aux")
 }
 
 class FileSystemWorkspace(val location: String, urlPrefix: List[String]) extends Workspace {
@@ -73,19 +74,24 @@ class FileSystemWorkspace(val location: String, urlPrefix: List[String]) extends
 
   private def assertRootExists = if (!root.exists) root.mkdirs()
 
-  def copyFrom(source: File, charset: Charset, filename: String): Future[Either[Exception, String]] = Future {
-    try {
-      assertRootExists
-      //TODO check charset and transcode to utf-8 if needed
-      Files.copy(source.toPath, root.toPath.resolve(filename), StandardCopyOption.REPLACE_EXISTING)
-      Right(filename)
-    }
-    catch {
-      case e: Exception =>
-        println(e)
-        Left(e)
-    }
+  def copyFrom(source: File, charset: Charset, filename: String): Future[String] = Future {
+    assertRootExists
+    //TODO check charset and transcode to utf-8 if needed
+    Files.copy(source.toPath, root.toPath.resolve(filename), StandardCopyOption.REPLACE_EXISTING)
+    filename
+  }
 
+  def renderPdf(sourcefilename: String): Future[(String, String)] = Future {
+    try {
+      val pdflatex = new ProcessBuilder("pdflatex", sourcefilename)
+      pdflatex.directory(root)
+      pdflatex.redirectErrorStream(true)
+      val process = pdflatex.start()
+      process.waitFor(10, java.util.concurrent.TimeUnit.SECONDS)
+      process.exitValue()
+    }
+    catch { case e => println(e) }
+    (sourcefilename, sourcefilename.replace(".tex", ".pdf"))
   }
 
 }

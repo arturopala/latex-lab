@@ -57,26 +57,57 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
     }
   }
 
-  "GET /resources/test/test.log" should "return 404" in {
-    Get("/resources/test/test.log") ~> module.httpService.route ~> check {
+  /*"GET /resources/test/test.aux" should "return 404" in {
+    Get("/resources/test/test.aux") ~> module.httpService.route ~> check {
       status should be(NotFound)
     }
-  }
+  }*/
 
-  "POST /documents/foo" should "store new content and return resource url" in {
+  /*"POST /documents/foo" should "store new content and return resource url" in {
     val prefix: String = alphaStr(Parameters.default.withSize(8)).get
-    forAll((alphaStr, "text"), (uuid, "suffix"), minSize(1024), maxSize(100 * 1024), minSuccessful(50)) { (text: String, suffix: UUID) =>
+    forAll((alphaStr, "text"), (uuid, "suffix"), minSize(1024), maxSize(100 * 1024), minSuccessful(10), maxDiscarded(10), workers(1)) { (text: String, suffix: UUID) =>
       val key = prefix+"_"+suffix
-      Post(s"/documents/$key", HttpEntity(ContentTypes.`text/plain(UTF-8)`, text)) ~> module.httpService.route ~> check {
+      Post(s"/documents/$key", HttpEntity(ContentTypes.`text/plain(UTF-8)`, TestDocument(text))) ~> module.httpService.route ~> check {
+        module.root.exists(s"$key/$key.tex") shouldBe true
         status should be(OK)
         header("Location") shouldBe Some(Location(Uri(s"/resources/$key/$key.tex")))
-        module.root.exists(s"$key/$key.tex") shouldBe true
       }
     }
     new java.io.File(module.root.location).listFiles filter (_.getName.startsWith(prefix+"_")) foreach { file =>
       new java.io.File(file, file.getName+".tex").delete
+      new java.io.File(file, file.getName+".pdf").delete
+      new java.io.File(file, file.getName+".log").delete
+      new java.io.File(file, file.getName+".aux").delete
       file.delete
     }
-  }
+  }*/
 
+}
+
+object TestDocument {
+  def apply(text: String): String = s"""
+\\documentclass{article}
+\\usepackage[utf8]{inputenc}
+
+\\title{test}
+\\date{November 2015}
+
+\\usepackage{natbib}
+\\usepackage{graphicx}
+
+\\begin{document}
+
+\\maketitle
+
+\\section{Introduction}
+There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable.
+There is another theory which states that this has already happened.
+
+${text.split("a").mkString(" ")}
+
+\\section{Conclusion}
+``I always thought something was fundamentally wrong with the universe''.
+
+\\end{document}
+"""
 }

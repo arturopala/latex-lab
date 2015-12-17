@@ -6,6 +6,8 @@ import latex.actor.KeyHolder
 import java.io.File
 import java.nio.charset.{ Charset, StandardCharsets }
 import akka.pattern.pipe
+import concurrent.Future
+import util.{ Try, Success, Failure, Left, Right }
 
 case class GetDocument(key: String) extends KeyHolder[String]
 case class SetDocument(key: String, file: File, charset: Charset) extends KeyHolder[String]
@@ -23,18 +25,20 @@ class DocumentActor(documentKey: String, workspace: Workspace) extends Actor {
   def receive: Receive = {
 
     case GetDocument(key) if key == documentKey =>
-      val documentOpt = workspace.urlOf(tex) map { url =>
+      val response: Option[Document] = workspace.urlOf(tex) map { url =>
         Document(url, resourceUrls)
       }
-      sender() ! documentOpt
+      sender() ! response
 
     case SetDocument(key, file, charset) if key == documentKey =>
-      workspace.copyFrom(file, charset, tex) map {
-        case Right(filename) =>
-          println(filename)
-          workspace.urlOf(filename).map(Right(_)).getOrElse(Left(new java.io.FileNotFoundException()))
-        case left => left
-      } pipeTo sender()
+      val response: Future[Try[String]] = workspace.copyFrom(file, charset, tex)
+        .flatMap(workspace.renderPdf)
+        .map {
+          case (sourcefile, pdffile) =>
+            println(sourcefile)
+            workspace.urlOf(sourcefile).map(Success(_)).getOrElse(Failure(new java.io.FileNotFoundException()))
+        } recover { case e => Failure(e) }
+      response pipeTo sender()
 
   }
 
