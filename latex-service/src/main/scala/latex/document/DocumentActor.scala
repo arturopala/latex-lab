@@ -31,7 +31,8 @@ class DocumentActor(documentKey: String, workspace: Workspace) extends Actor {
       sender() ! response
 
     case SetDocument(key, file, charset) if key == documentKey =>
-      val response: Future[Try[String]] = workspace.copyFrom(file, charset, tex)
+      val response: Future[Try[String]] = workspace
+        .copyFrom(file, charset, tex)
         .flatMap(workspace.renderPdf)
         .map {
           case (sourcefile, pdffile) =>

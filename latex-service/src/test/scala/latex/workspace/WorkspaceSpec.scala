@@ -28,7 +28,7 @@ class WorkspaceSpec extends FlatSpecLike with Matchers with PropertyChecks {
     workspace.exists("test.tex") shouldBe true
     workspace.exists("images/test.jpg") shouldBe true
     workspace.exists("test.bib") shouldBe true
-    workspace.exists("test.log") shouldBe true
+    workspace.exists("test.log") shouldBe false
     workspace.exists("foo.foo") shouldBe false
     workspace.exists("bar/foo.foo") shouldBe false
   }

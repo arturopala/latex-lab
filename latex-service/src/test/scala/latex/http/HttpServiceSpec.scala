@@ -57,15 +57,15 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
     }
   }
 
-  /*"GET /resources/test/test.aux" should "return 404" in {
+  "GET /resources/test/test.aux" should "return 404" in {
     Get("/resources/test/test.aux") ~> module.httpService.route ~> check {
       status should be(NotFound)
     }
-  }*/
+  }
 
-  /*"POST /documents/foo" should "store new content and return resource url" in {
+  "POST /documents/foo" should "store new content and return resource url" in {
     val prefix: String = alphaStr(Parameters.default.withSize(8)).get
-    forAll((alphaStr, "text"), (uuid, "suffix"), minSize(1024), maxSize(100 * 1024), minSuccessful(10), maxDiscarded(10), workers(1)) { (text: String, suffix: UUID) =>
+    forAll((alphaStr, "text"), (uuid, "suffix"), minSize(1024), maxSize(10 * 1024), minSuccessful(10), maxDiscarded(10), workers(1)) { (text: String, suffix: UUID) =>
       val key = prefix+"_"+suffix
       Post(s"/documents/$key", HttpEntity(ContentTypes.`text/plain(UTF-8)`, TestDocument(text))) ~> module.httpService.route ~> check {
         module.root.exists(s"$key/$key.tex") shouldBe true
@@ -80,7 +80,7 @@ class HttpServiceSpec extends FlatSpecLike with Matchers with PropertyChecks wit
       new java.io.File(file, file.getName+".aux").delete
       file.delete
     }
-  }*/
+  }
 
 }
 
